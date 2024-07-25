@@ -1,6 +1,25 @@
 return {
     {
         "williamboman/mason.nvim",
+        build = ":MasonInstallAll",
+        config = function()
+            require("mason").setup{}
+            vim.api.nvim_create_user_command("MasonInstallAll",function ()
+                vim.cmd('MasonUpdate')
+                local ensure_installed = {
+                    "bash-language-server",
+                    "css-lsp",
+                    "eslint-lsp",
+                    "html-lsp",
+                    "json-lsp",
+                    "lua-language-server",
+                    "python-lsp-server",
+                    "tailwindcss-language-server",
+                    "typescript-language-server",
+                }
+                vim.cmd('MasonInstall ' .. table.concat(ensure_installed, ' '))
+            end, { desc = "install all lsp tools" })
+        end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -10,7 +29,16 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup()
-            require("lspconfig").lua_ls.setup {
+            local lspconfig = require("lspconfig")
+            lspconfig.pylsp.setup {}
+            lspconfig.tsserver.setup {}
+            lspconfig.tailwindcss.setup {}
+            lspconfig.jsonls.setup {}
+            lspconfig.html.setup {}
+            lspconfig.eslint.setup {}
+            lspconfig.cssls.setup {}
+            lspconfig.bashls.setup {}
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         runtime = {
@@ -36,7 +64,6 @@ return {
                     },
                 }
             }
-            require("lspconfig").pylsp.setup {}
 
             -- LSPキーマッピング設定
             vim.api.nvim_create_autocmd('LspAttach', {
