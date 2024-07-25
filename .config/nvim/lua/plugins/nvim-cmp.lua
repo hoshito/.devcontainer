@@ -2,15 +2,19 @@ return {
     "hrsh7th/nvim-cmp",
     --event = "InsertEnter",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "windwp/nvim-autopairs",
-        "onsails/lspkind-nvim",
-        { "roobert/tailwindcss-colorizer-cmp.nvim", config = true }
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-cmdline",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-nvim-lsp-signature-help",
+	"hrsh7th/cmp-nvim-lua",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-vsnip",
+	"hrsh7th/vim-vsnip",
+	"neovim/nvim-lspconfig",
+	"onsails/lspkind-nvim",
+	{ "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+	"saadparwaiz1/cmp_luasnip",
+	"windwp/nvim-autopairs",
     },
     config = function()
         local cmp = require("cmp")

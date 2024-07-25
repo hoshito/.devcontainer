@@ -1,5 +1,4 @@
 require("config.lazy")
-
 -- vimrc
 local opt = vim.opt
 -- 行
@@ -20,3 +19,14 @@ opt.autoread = true
 opt.mouse = ""
 
 --opt.autochdir = true
+vim.keymap.set("n", "<leader>cd", function ()
+    vim.cmd(":cd %:h")
+    vim.cmd(":pwd")
+end)
+vim.keymap.set("n", "<leader>c.", function ()
+    vim.cmd(":cd ..")
+    vim.cmd(":pwd")
+end)
+vim.keymap.set("n", "<leader>p", function ()
+    vim.cmd(":pwd")
+end)

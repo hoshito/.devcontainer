@@ -5,14 +5,10 @@ return {
         version = "*",
         config = function()
             require("toggleterm").setup {
-                open_mapping = { [[<c-\>]], [[<c-¥>]] }
+                open_mapping = { [[<c-\>]], [[<c-¥>]] },
+                autochdir = true,
+                shell = "/bin/bash"
             }
-            -- ターミナルのキーマッピング
-            function _G.set_terminal_keymaps()
-                local opts = {buffer = 0}
-                vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-            end
-
             -- ターミナル
             local terminal = require("toggleterm.terminal").Terminal:new({
                 cmd = "bash",
@@ -20,7 +16,7 @@ return {
             function _terminal_toggle()
                 terminal:toggle()
             end
-            vim.api.nvim_set_keymap("n", "<leader>ba", "<cmd>lua _terminal_toggle()<CR>", {noremap = true, silent = true})
+            vim.api.nvim_set_keymap("n", "<leader>bb", "<cmd>lua _terminal_toggle()<CR>", {noremap = true, silent = true})
 
             -- フローティングターミナル
             local terminal_float = require("toggleterm.terminal").Terminal:new({

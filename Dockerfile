@@ -18,6 +18,7 @@ COPY .config /root/.config
 COPY .bash_aliases /root/.bash_aliases
 
 RUN nvim +:UpdateRemotePlugins +qa
-RUN nvim --headless -c "MasonInstall lua-language-server" -c qall
-RUN nvim --headless -c "MasonInstall python-lsp-server" -c qall
+RUN nvim --headless -c "MasonInstallAll" -c qall
+#RUN nvim --headless -c "MasonInstall lua-language-server" -c qall
+#RUN nvim --headless -c "MasonInstall python-lsp-server" -c qall
 
