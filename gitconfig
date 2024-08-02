@@ -1,0 +1,5 @@
+[safe]
+        directory = /root/devcontainer
+[user]
+        name = hoshito
+        email = 10190139+hoshito@users.noreply.github.com

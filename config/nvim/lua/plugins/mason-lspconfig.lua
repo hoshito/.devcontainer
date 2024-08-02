@@ -16,6 +16,7 @@ return {
                     "python-lsp-server",
                     "tailwindcss-language-server",
                     "typescript-language-server",
+                    "typos",
                 }
                 vim.cmd('MasonInstall ' .. table.concat(ensure_installed, ' '))
             end, { desc = "install all lsp tools" })

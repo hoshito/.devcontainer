@@ -3,5 +3,11 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    volumes:
+      - "study-js-volume:/root/study"
+      - ".:/root/devcontainer"
     tty: true
 
+volumes:
+  study-js-volume:
+    name: study-js-volume

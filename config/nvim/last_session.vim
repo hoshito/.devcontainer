@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/work
+cd ~/study/ch13
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,15 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +24 ch7.js
-badd +6 ~/.config/nvim/lua/plugins/comment.lua
-badd +1 ~/5
+badd +22 main.js
+badd +1 ~/study/ch13/test.txt
+badd +2 ~/.config/nvim/lua/plugins/autopairs.lua
+badd +1 ~/study/ch13/test.json
 argglobal
 %argdel
-$argadd ch7.js
-edit ch7.js
+edit ~/study/ch13/test.json
 argglobal
-balt ch7.js
+balt main.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -32,11 +32,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 24 - ((23 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
+keepjumps 1
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
